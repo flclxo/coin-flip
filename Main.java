@@ -17,7 +17,7 @@ public class Main {
         }
 
         else {
-            System.out.println("Tails is the outcome of the coin toss. Thankyou for playing!");
+            System.out.println("Tails is the outcome of the coin toss. Thank you for playing!");
         }
 
     }
