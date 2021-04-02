@@ -1,24 +1,64 @@
 import java.util.*;
+import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.geometry.Pos;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.layout.FlowPane;
+import javafx.stage.Stage;
+import javafx.scene.text.Text; 
 
-public class Main {
+public class Main extends Application{
+
+    private Button Flip;
+    private FlowPane pane;
+    private Text outCome;
+
+
+    public void start(Stage primaryStage){
+
+        Flip = new Button("Click me to play heads or tails!");
+       outCome = new Text("Welcome");
+
+        Flip.setOnAction(this::processCoinFlip);
+
+        pane = new FlowPane(Flip, outCome);
+        pane.setAlignment(Pos.CENTER);
+		pane.setHgap(20);
+		pane.setStyle("-fx-background-color: white");
+
+
+        Scene scene = new Scene (pane, 600, 300);
+
+        primaryStage.setTitle("Coin Flip");
+        primaryStage.setScene(scene);
+		primaryStage.show();
+
+
+    }
+
+    public void processCoinFlip(ActionEvent event) {
+
+        Random game = new Random();
+
+        int toss = game.nextInt(2) + 1; 
+        
+        if (toss == 1) { 
+
+            outCome.setText("Outcome is Heads");
+            pane.setStyle("-fx-background-color: #097aeb");
+        }
+
+        else { 
+            outCome.setText("Outcome is Tails");
+            pane.setStyle("-fx-background-color: #93eda7");
+        }
+
+    }
+
+
     public static void main(String[] args) {
        
-        Scanner scan = new Scanner(System.in); // Get user input
-        Random game = new Random(); // Generate number 1 or 2.
-
-        System.out.println("Heads or Tails?");
-
-        String headsOrTails = scan.nextLine(); // Get user choice Heads or Tails?
-
-        int toss = game.nextInt(2) + 1; // Random gen from 1-2. 
-        
-        if (toss == 1) { // Random gen 1 = heads
-            System.out.println("Heads  is the outcome of the coin toss. Thank you for playing!");
-        }
-
-        else { // If it's not 1 it = to tails 
-            System.out.println("Tails is the outcome of the coin toss. Thank you for playing!");
-        }
-
+         launch(args);
     }
 }
