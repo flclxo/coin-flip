@@ -17,7 +17,7 @@ public class Main extends Application{
 
     public void start(Stage primaryStage){
 
-        Flip = new Button("Click me to play heads or tails!");
+       Flip = new Button("Click me to play heads or tails!");
        outCome = new Text("Welcome");
 
         Flip.setOnAction(this::processCoinFlip);
